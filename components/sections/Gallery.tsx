@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import GoldDivider from "@/components/ui/GoldDivider";
@@ -21,12 +22,12 @@ import GoldDivider from "@/components/ui/GoldDivider";
 const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
 
 const photos = [
-    "https://images.unsplash.com/photo-1511285560929-97aadf5cfe58?q=80&w=800",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800",
-    "https://images.unsplash.com/photo-1522673607200-1645062cd95c?q=80&w=800",
-    "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800",
-    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=800",
-    "https://images.unsplash.com/photo-1519225448526-72c6ef4bc016?q=80&w=800",
+    "/Prewed/1.png",
+    "/Prewed/2.png",
+    "/Prewed/3.png",
+    "/Prewed/4.png",
+    "/Prewed/5.png",
+    "/Prewed/6.png",
 ];
 
 export default function Gallery() {
@@ -100,10 +101,12 @@ export default function Gallery() {
                                 >
                                     {/* Photo container */}
                                     <div className="relative aspect-[3/4] overflow-hidden">
-                                        <img
+                                        <Image
                                             src={src}
                                             alt={`Gallery ${ROMAN[i]}`}
-                                            className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            className="object-cover transition-transform duration-1000 group-hover:scale-105"
                                             style={{
                                                 filter: "sepia(15%) brightness(0.88) contrast(1.05)",
                                             }}
@@ -171,12 +174,14 @@ export default function Gallery() {
                                 boxShadow: "0 40px 120px rgba(0,0,0,0.8)",
                             }}
                         >
-                            <div style={{ padding: "16px", backgroundColor: "#0A0806" }}>
-                                <img
+                            <div style={{ padding: "16px", backgroundColor: "#0A0806" }} className="relative">
+                                <Image
                                     src={photos[selectedId]}
                                     alt={`Gallery ${ROMAN[selectedId]}`}
+                                    width={900}
+                                    height={1200}
                                     className="block max-h-[70vh] w-auto object-contain"
-                                    style={{ filter: "sepia(10%) brightness(0.9)" }}
+                                    style={{ filter: "sepia(10%) brightness(0.9)", height: "auto", maxHeight: "70vh" }}
                                 />
                             </div>
                             <p

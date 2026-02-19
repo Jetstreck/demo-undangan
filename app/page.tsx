@@ -28,16 +28,18 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: "#0D0B09" }}>
-      {/* ── Phase 1: Invitation Seal ─────────────────────── */}
+      {/* ── Custom Cursor — aktif sejak PreEntry ─────────────── */}
+      <CustomCursor />
+
+      {/* ── Phase 1: Invitation Seal ─────────────────────────── */}
       {!hasEntered && (
         <PreEntry onEnter={() => setHasEntered(true)} />
       )}
 
-      {/* ── Phase 2+: Main Experience ────────────────────── */}
+      {/* ── Phase 2+: Main Experience ────────────────────────── */}
       {hasEntered && (
         <SmoothScrollProvider>
           {/* Global UI */}
-          <CustomCursor />
           <AudioPlayer />
 
           {/* ── Phase 2: Gate + Couple Reveal ── */}

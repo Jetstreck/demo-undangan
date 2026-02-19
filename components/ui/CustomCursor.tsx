@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 /**
@@ -15,13 +15,18 @@ export default function CustomCursor() {
     const [trail, setTrail] = useState({ x: -200, y: -200 });
     const [clicked, setClicked] = useState(false);
     const [linkHovered, setLinkHovered] = useState(false);
-    // null = not yet determined (prevents SSR flash), true = desktop mouse
-    const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+
+    // Use lazy initializer to avoid calling setState in effect body
+    // (component is "use client" only — no SSR risk)
+    const [isDesktop] = useState<boolean>(() => {
+        if (typeof window === "undefined") return false;
+        return window.matchMedia("(pointer: fine)").matches;
+    });
+
+    const isDesktopRef = useRef(isDesktop);
 
     useEffect(() => {
-        const mq = window.matchMedia("(pointer: fine)");
-        setIsDesktop(mq.matches);
-        if (!mq.matches) return; // touch device — bail out
+        if (!isDesktopRef.current) return;
 
         let rafId: number;
         let targetX = -200;
@@ -66,7 +71,7 @@ export default function CustomCursor() {
     }, []);
 
     // Don't render on touch devices or during SSR
-    if (isDesktop !== true) return null;
+    if (!isDesktop) return null;
 
     const ringSize = linkHovered ? 50 : 34;
 

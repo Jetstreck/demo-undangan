@@ -184,19 +184,25 @@ export default function CeremonyDetails() {
                                         <MapPin className="mt-0.5 shrink-0" size={16} color="#A8893A" />
                                         <div>
                                             <p className="font-serif text-[#3A2800]" style={{ fontSize: "1rem" }}>
-                                                The Royal Kraton Hall
+                                                The Trans Icon Grand Ballroom
                                             </p>
                                             <p className="font-sans text-[#5C3A00]/60 mt-0.5" style={{ fontSize: "0.72rem", letterSpacing: "0.06em" }}>
-                                                Jl. Keraton No. 1, Yogyakarta
+                                                Jl. Kertajaya Indah Timur No.4, Surabaya
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="pt-2">
-                                    <button className="btn-royal" style={{ color: "#5C3A00", borderColor: "rgba(168,137,58,0.5)" }}>
+                                    <a
+                                        href="https://maps.app.goo.gl/TransIconSby"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-royal"
+                                        style={{ color: "#5C3A00", borderColor: "rgba(168,137,58,0.5)" }}
+                                    >
                                         Open Maps
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -305,7 +311,7 @@ export default function CeremonyDetails() {
                                     <div className="flex items-start gap-4">
                                         <Clock className="mt-0.5 shrink-0" size={16} color="#C6A75E" />
                                         <p className="font-serif text-[#F5EDD8]" style={{ fontSize: "1rem" }}>
-                                            11.00 – 13.00 WIB
+                                            19.00 – 21.00 WIB
                                         </p>
                                     </div>
 
@@ -313,19 +319,24 @@ export default function CeremonyDetails() {
                                         <MapPin className="mt-0.5 shrink-0" size={16} color="#C6A75E" />
                                         <div>
                                             <p className="font-serif text-[#F5EDD8]" style={{ fontSize: "1rem" }}>
-                                                Jade Dragon Ballroom
+                                                JW Marriott Surabaya — Imperial Ballroom
                                             </p>
                                             <p className="font-sans text-[#F5EDD8]/50 mt-0.5" style={{ fontSize: "0.72rem", letterSpacing: "0.06em" }}>
-                                                Jl. Sudirman No. 88, Jakarta
+                                                Jl. Embong Malang No.85–89, Surabaya
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="pt-2">
-                                    <button className="btn-royal">
+                                    <a
+                                        href="https://maps.app.goo.gl/JWMarriottSby"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn-royal"
+                                    >
                                         Open Maps
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

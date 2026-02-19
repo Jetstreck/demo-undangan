@@ -121,8 +121,8 @@ export default function Closing() {
                         className="font-serif italic text-[#F5EDD8]/55"
                         style={{ fontSize: "clamp(1rem,2.2vw,1.25rem)", letterSpacing: "0.04em", lineHeight: 1.9 }}
                     >
-                        "Terima kasih telah hadir dalam perjalanan cinta kami.<br />
-                        Doa dan restu kalian adalah kado terindah."
+                        &ldquo;Terima kasih telah hadir dalam perjalanan cinta kami.<br />
+                        Doa dan restu kalian adalah kado terindah.&rdquo;
                     </p>
                     <p
                         className="font-sans text-[#C6A75E]/30 uppercase"

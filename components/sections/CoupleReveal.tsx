@@ -208,7 +208,7 @@ export default function CoupleReveal({ triggerAnimation = false }: CoupleRevealP
                         className="font-serif italic text-[#1A1510]/55"
                         style={{ fontSize: "clamp(0.8rem,1.6vw,1rem)", letterSpacing: "0.06em", maxWidth: 480, margin: "0 auto" }}
                     >
-                        "Semoga persatuan ini kekal abadi, dua hati yang menjadi satu selamanya."
+                        &ldquo;Semoga persatuan ini kekal abadi, dua hati yang menjadi satu selamanya.&rdquo;
                     </p>
 
                     {/* Date line */}

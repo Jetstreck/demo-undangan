@@ -115,7 +115,7 @@ export default function RSVP() {
                                     Dear {name || "Honoured Guest"},
                                 </p>
                                 <p className="font-serif italic text-[#3A2800]/70 mt-2" style={{ fontSize: "0.92rem" }}>
-                                    "We look forward to celebrating this sacred union with you."
+                                    &ldquo;We look forward to celebrating this sacred union with you.&rdquo;
                                 </p>
 
                                 <p

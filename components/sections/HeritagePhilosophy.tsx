@@ -111,7 +111,7 @@ export default function HeritagePhilosophy() {
                             className="font-serif italic text-[#F5EDD8]/70"
                             style={{ fontSize: "clamp(0.95rem,2vw,1.15rem)", letterSpacing: "0.05em" }}
                         >
-                            "Bǎi Nián Hǎo Hé"
+                            &ldquo;Bǎi Nián Hǎo Hé&rdquo;
                         </p>
 
                         {/* English meaning */}
@@ -121,7 +121,7 @@ export default function HeritagePhilosophy() {
                         >
                             May their union last a hundred years together. A timeless wish
                             for eternal love, harmony, and shared fortune between two families
-                            joined as one under Heaven's blessing.
+                            joined as one under Heaven&apos;s blessing.
                         </p>
 
                         {/* Dragon-Phoenix symbolism note */}
@@ -169,20 +169,60 @@ export default function HeritagePhilosophy() {
                     }}
                 />
 
-                {/* Gunungan / Kayon (cosmic mountain) SVG watermark at 3% */}
-                {/* Simplified gunungan silhouette: triangular mountain with leaf motif */}
+                {/* Hanacaraka (Aksara Jawa) — tiered watermark grid */}
+                {/* Aksara Jawa Unicode block U+A980–U+A9DF                  */}
+                {/* Layer 1: karakter besar di sudut, sangat transparan       */}
                 <div
-                    className="absolute select-none pointer-events-none overflow-hidden"
-                    style={{ left: "-5%", top: "-5%", opacity: 0.03 }}
+                    className="absolute inset-0 select-none pointer-events-none overflow-hidden"
+                    aria-hidden="true"
                 >
-                    <svg viewBox="0 0 300 500" width={300} height={500} fill="#C6A75E">
-                        {/* Triangular mountain body */}
-                        <polygon points="150,20 280,480 20,480" />
-                        {/* Inner detail — simple leaf veins */}
-                        <line x1="150" y1="20" x2="150" y2="480" stroke="rgba(0,0,0,0.2)" strokeWidth="2" />
-                        <line x1="150" y1="150" x2="100" y2="300" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" />
-                        <line x1="150" y1="150" x2="200" y2="300" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" />
-                    </svg>
+                    {/* ── Karakter besar pojok kiri-atas ── */}
+                    <span style={{
+                        position: "absolute", top: "-4%", left: "-3%",
+                        fontFamily: "serif", fontSize: "clamp(14rem,32vw,26rem)",
+                        color: "#C6A75E", opacity: 0.045, lineHeight: 1,
+                        userSelect: "none",
+                    }}>ꦲ</span>
+
+                    {/* ── Karakter besar pojok kanan-bawah ── */}
+                    <span style={{
+                        position: "absolute", bottom: "-6%", right: "-4%",
+                        fontFamily: "serif", fontSize: "clamp(12rem,26vw,20rem)",
+                        color: "#C6A75E", opacity: 0.035, lineHeight: 1,
+                        userSelect: "none",
+                    }}>ꦏ</span>
+
+                    {/* ── Grid medium — tersebar di panel ── */}
+                    {([
+                        { ch: "ꦤ", top: "8%", left: "60%", size: "5rem", op: 0.055 },
+                        { ch: "ꦕ", top: "22%", left: "15%", size: "4rem", op: 0.04 },
+                        { ch: "ꦫ", top: "35%", left: "72%", size: "6rem", op: 0.05 },
+                        { ch: "ꦏ", top: "48%", left: "30%", size: "4.5rem", op: 0.04 },
+                        { ch: "ꦢ", top: "58%", left: "58%", size: "5.5rem", op: 0.055 },
+                        { ch: "ꦠ", top: "70%", left: "10%", size: "4rem", op: 0.04 },
+                        { ch: "ꦱ", top: "78%", left: "75%", size: "5rem", op: 0.045 },
+                        { ch: "ꦮ", top: "15%", left: "38%", size: "3.5rem", op: 0.035 },
+                        { ch: "ꦭ", top: "42%", left: "85%", size: "4rem", op: 0.038 },
+                        { ch: "ꦥ", top: "88%", left: "42%", size: "4.5rem", op: 0.04 },
+                        { ch: "ꦝ", top: "62%", left: "20%", size: "3rem", op: 0.03 },
+                        { ch: "ꦗ", top: "30%", left: "50%", size: "3.5rem", op: 0.032 },
+                    ] as { ch: string; top: string; left: string; size: string; op: number }[]).map(({ ch, top, left, size, op }, i) => (
+                        <span
+                            key={i}
+                            style={{
+                                position: "absolute",
+                                top, left,
+                                fontFamily: "serif",
+                                fontSize: size,
+                                color: "#C6A75E",
+                                opacity: op,
+                                lineHeight: 1,
+                                userSelect: "none",
+                            }}
+                        >
+                            {ch}
+                        </span>
+                    ))}
                 </div>
 
                 {/* Content */}
@@ -228,8 +268,8 @@ export default function HeritagePhilosophy() {
                             className="font-serif italic text-[#F5EDD8]/70"
                             style={{ fontSize: "clamp(0.95rem,2vw,1.1rem)", letterSpacing: "0.04em" }}
                         >
-                            "Jiwa yang damai, cinta yang suci,<br />
-                            berkah yang melimpah selamanya."
+                            &ldquo;Jiwa yang damai, cinta yang suci,<br />
+                            berkah yang melimpah selamanya.&rdquo;
                         </p>
 
                         {/* English meaning */}
