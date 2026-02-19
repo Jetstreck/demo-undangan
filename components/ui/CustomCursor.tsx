@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 /**
@@ -16,17 +16,13 @@ export default function CustomCursor() {
     const [clicked, setClicked] = useState(false);
     const [linkHovered, setLinkHovered] = useState(false);
 
-    // Use lazy initializer to avoid calling setState in effect body
-    // (component is "use client" only — no SSR risk)
-    const [isDesktop] = useState<boolean>(() => {
-        if (typeof window === "undefined") return false;
-        return window.matchMedia("(pointer: fine)").matches;
-    });
-
-    const isDesktopRef = useRef(isDesktop);
+    // Must start as false (SSR-safe) and update on client to avoid hydration mismatch
+    const [isDesktop, setIsDesktop] = useState<boolean>(false);
 
     useEffect(() => {
-        if (!isDesktopRef.current) return;
+        const desktop = window.matchMedia("(pointer: fine)").matches;
+        setIsDesktop(desktop);
+        if (!desktop) return;
 
         let rafId: number;
         let targetX = -200;

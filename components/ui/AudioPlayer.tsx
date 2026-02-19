@@ -14,7 +14,7 @@ export default function AudioPlayer() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
-        audioRef.current = new Audio("/audio/background-music.mp3");
+        audioRef.current = new Audio("/audio/Billie Eilish - hotline (edit).mp3");
         audioRef.current.loop = true;
         audioRef.current.volume = 0;
 
@@ -27,8 +27,8 @@ export default function AudioPlayer() {
     const fadeIn = () => {
         if (!audioRef.current) return;
         const interval = setInterval(() => {
-            if (audioRef.current && audioRef.current.volume < 0.38) {
-                audioRef.current.volume = Math.min(0.4, audioRef.current.volume + 0.03);
+            if (audioRef.current && audioRef.current.volume < 0.2) {
+                audioRef.current.volume = Math.min(0.2, audioRef.current.volume + 0.02);
             } else {
                 clearInterval(interval);
             }
