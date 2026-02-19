@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <pattern id="parang" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <!-- Parang Rusak: flowing diagonal sword-blade motif -->
+      <path d="M0 20 Q10 10 20 20 Q30 30 40 20" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="0.4" fill="none" opacity="0.3"/>
+      <path d="M0 30 Q10 20 20 30 Q30 40 40 30" stroke="currentColor" stroke-width="0.4" fill="none" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="120" height="120" fill="url(#parang)"/>
+</svg>

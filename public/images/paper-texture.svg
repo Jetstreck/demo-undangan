@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <filter id="paper">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+    <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend"/>
+    <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+  </filter>
+  <!-- Aged paper: warm buff with fibrous texture -->
+  <rect width="300" height="300" fill="#EDE5CC" filter="url(#paper)" opacity="0.6"/>
+  <!-- Subtle horizontal grain lines -->
+  <line x1="0" y1="75"  x2="300" y2="75"  stroke="rgba(180,160,120,0.08)" stroke-width="0.5"/>
+  <line x1="0" y1="150" x2="300" y2="150" stroke="rgba(180,160,120,0.06)" stroke-width="0.5"/>
+  <line x1="0" y1="225" x2="300" y2="225" stroke="rgba(180,160,120,0.08)" stroke-width="0.5"/>
+</svg>

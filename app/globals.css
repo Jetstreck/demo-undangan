@@ -1,26 +1,520 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════
+   LUXURY THEME TOKENS
+   Chinese Indonesian Royal Heritage × Javanese Keraton Elegance
+═══════════════════════════════════════════════════════════════════ */
+@theme {
+  /* ── Color System ─────────────────────────────────────────────── */
+  --color-primary: #7A0C0C;
+  --color-accent: #C6A75E;
+  --color-base: #F8F1E5;
+  --color-dark: #0D0B09;
+  --color-vermillion: #7A0C0C;
+  --color-vermillion-deep: #5C0808;
+  --color-vermillion-muted: #3D0808;
+  --color-ivory-silk: #F5EDD8;
+  --color-ivory-warm: #EDE5CC;
+  --color-ivory-faint: #F9F4EC;
+  --color-gold-light: #E8C97A;
+  --color-gold: #C6A75E;
+  --color-gold-deep: #A8893A;
+  --color-gold-foil: #D4AF37;
+  --color-obsidian: #0D0B09;
+  --color-charcoal: #1A1510;
+  --color-charcoal-red: #1C0D0D;
+
+  /* ── Fonts ────────────────────────────────────────────────────── */
+  --font-serif: var(--font-cinzel), serif;
+  --font-sans: var(--font-lato), sans-serif;
+  --font-script: var(--font-pinyon), cursive;
+  --font-noto: var(--font-noto), serif;
+
+  /* ── Animations ───────────────────────────────────────────────── */
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-slower: pulse 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-obsidian);
+  --foreground: var(--color-ivory-silk);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom luxury scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::-webkit-scrollbar-track {
+  background: #0D0B09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A8893A;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C6A75E;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* Hide default cursor on desktop — CustomCursor handles it */
+  cursor: none;
+}
+
+/* Restore cursor on touch / mobile */
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MATERIAL SIMULATION SYSTEM
+   Philosophy: everything must feel tactile and physical
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── Gold Foil Shimmer ────────────────────────────────────────────
+   Simulate real gold foil: gradient mask that moves across text.
+   Usage: apply .gold-foil class to any text element.
+*/
+.gold-foil-text {
+  background: linear-gradient(105deg,
+      #A8893A 0%,
+      #C6A75E 20%,
+      #E8C97A 35%,
+      #D4AF37 50%,
+      #E8C97A 65%,
+      #C6A75E 80%,
+      #A8893A 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: goldShimmer 4s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* ── Gold foil shimmer on hover only (for names) ─────────────────*/
+.gold-foil-hover {
+  background: linear-gradient(105deg,
+      #A8893A 0%,
+      #C6A75E 20%,
+      #E8C97A 35%,
+      #D4AF37 50%,
+      #E8C97A 65%,
+      #C6A75E 80%,
+      #A8893A 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-position: 200% center;
+  transition: background-position 3s ease;
+}
+
+.gold-foil-hover:hover {
+  background-position: -200% center;
+}
+
+/* ── Emboss Text Effect ───────────────────────────────────────────
+   Simulate gold foil embossing: light from top-left, shadow bottom-right.
+   Usage: .text-emboss on dark backgrounds
+*/
+.text-emboss {
+  text-shadow:
+    1px 1px 0 rgba(232, 201, 122, 0.5),
+    2px 2px 0 rgba(90, 60, 10, 0.3),
+    -1px -1px 0 rgba(255, 255, 240, 0.1);
+}
+
+/* ── Deboss Box Effect ────────────────────────────────────────────
+   Simulate pressed-in seal / embossed document border
+*/
+.box-deboss {
+  box-shadow:
+    inset 2px 2px 6px rgba(0, 0, 0, 0.4),
+    inset -1px -1px 4px rgba(255, 255, 255, 0.06),
+    0 0 30px rgba(198, 167, 94, 0.05);
+}
+
+/* ── Silk Background Simulation ──────────────────────────────────
+   Real silk = slight sheen + directional texture.
+   Achieved via layered radial gradients.
+*/
+.bg-silk-cream {
+  background-color: #EDE5CC;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(200, 180, 140, 0.1) 0%, transparent 60%),
+    url('/images/paper-texture.svg');
+  background-blend-mode: overlay, overlay, multiply;
+}
+
+.bg-silk-red {
+  background-color: #3D0808;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(122, 12, 12, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(5, 0, 0, 0.4) 0%, transparent 60%),
+    url('/images/silk-noise.svg');
+  background-blend-mode: overlay, overlay, multiply;
+  background-size: auto, auto, 200px;
+}
+
+.bg-silk-dark {
+  background-color: #0D0B09;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(40, 30, 15, 0.6) 0%, transparent 50%),
+    url('/images/silk-noise.svg');
+  background-blend-mode: overlay, multiply;
+  background-size: auto, 180px;
+}
+
+/* ── Vignette Overlay ────────────────────────────────────────────
+   Soft darkening at edges simulating studio spotlight on subject
+*/
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(13, 11, 9, 0.8) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Gold Border Gradient ─────────────────────────────────────────*/
+.border-gold-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.border-gold-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #E8C97A, #A8893A, #E8C97A);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Double Rule Divider ─────────────────────────────────────────*/
+.divider-double {
+  position: relative;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C6A75E, transparent);
+}
+
+.divider-double::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #A8893A55, transparent);
+}
+
+/* ── Paper Aged Texture Helper ───────────────────────────────────*/
+.texture-paper {
+  background-image: url('/images/paper-texture.svg');
+  background-repeat: repeat;
+  background-size: 300px;
+  mix-blend-mode: multiply;
+  opacity: 0.25;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANIMATION KEYFRAMES
+═══════════════════════════════════════════════════════════════════ */
+
+/* Petal falling — slight sway, full rotation */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0px);
+    opacity: 0.9;
+  }
+
+  25% {
+    transform: translateY(25vh) rotate(180deg) translateX(30px);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(50vh) rotate(360deg) translateX(-20px);
+    opacity: 0.6;
+  }
+
+  75% {
+    transform: translateY(75vh) rotate(540deg) translateX(40px);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(115vh) rotate(720deg) translateX(10px);
+    opacity: 0;
+  }
+}
+
+/* Concentric ring expand (PreEntry seal) */
+@keyframes ringExpand {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Ink stamp press (PreEntry) */
+@keyframes inkPress {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  35% {
+    transform: scale(0.96);
+    opacity: 0.95;
+    filter: blur(0px);
+  }
+
+  60% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+/* Gold particle burst */
+@keyframes particleBurst {
+  0% {
+    transform: translate(0, 0) scale(1.2);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(var(--px), var(--py)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Light ray sweep (gate opening) */
+@keyframes raySweep {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  30% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+/* Smoke drift (gate opening) */
+@keyframes smokeDrift {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: translateY(-80px) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Audio waveform bars */
+@keyframes waveBar {
+  from {
+    transform: scaleY(0.3);
+  }
+
+  to {
+    transform: scaleY(1.0);
+  }
+}
+
+/* Petal float-sway for closing */
+@keyframes floatSway {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Gold shimmer scan */
+@keyframes shimmerScan {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Clock tick hand */
+@keyframes secondHandSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Floating label pulse glow */
+@keyframes inputGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 1px 0 0 rgba(198, 167, 94, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 2px 8px 0 rgba(198, 167, 94, 0.3);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════════════════════════════════════ */
+
+/* Classic gold text (solid, no shimmer) */
+.text-gold-solid {
+  color: #C6A75E;
+}
+
+/* Text with emboss shadow for display on dark backgrounds */
+.text-display-emboss {
+  color: #C6A75E;
+  text-shadow:
+    0 1px 0 rgba(232, 201, 122, 0.4),
+    0 -1px 0 rgba(80, 50, 5, 0.3),
+    0 0 40px rgba(198, 167, 94, 0.1);
+}
+
+/* Ceremony card gold frame line */
+.border-ceremony {
+  border: 1px solid rgba(198, 167, 94, 0.35);
+  outline: 1px solid rgba(198, 167, 94, 0.1);
+  outline-offset: 6px;
+}
+
+/* Royal button base */
+.btn-royal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.5rem;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: 1px solid rgba(198, 167, 94, 0.5);
+  color: #C6A75E;
+  background: transparent;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-royal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #C6A75E, #A8893A);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.btn-royal:hover::before {
+  transform: translateX(0);
+}
+
+.btn-royal:hover {
+  color: #0D0B09;
+  border-color: #C6A75E;
+}
+
+/* Input base (silk paper feel) */
+.input-silk {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(168, 137, 58, 0.4);
+  padding: 0.5rem 0 0.5rem;
+  font-family: var(--font-cinzel), serif;
+  font-size: 0.9rem;
+  color: #1A1510;
+  outline: none;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  caret-color: #C6A75E;
+}
+
+.input-silk:focus {
+  border-bottom-color: #C6A75E;
+  animation: inputGlow 2s ease-in-out infinite;
+}
+
+.input-silk::placeholder {
+  color: transparent;
 }
